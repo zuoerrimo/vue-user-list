@@ -50,3 +50,9 @@ export default {
     }
 }
 </script>
+<style type="text/css" scoped>
+  .table{
+    color: #fff;
+    width: 100%;
+  }
+</style>
