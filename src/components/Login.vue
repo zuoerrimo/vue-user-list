@@ -1,20 +1,26 @@
 <template>
-  <div>
-    <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2"
-      label-width="100px" class="demo-ruleForm login-pane">
-      <el-form-item label="用户名" prop="age">
+  <div class="login-pane">
+    <el-form :model="ruleForm" :rules="rules" ref="ruleForm"
+      class="demo-ruleForm">
+      <el-form-item  prop="name">
         <el-input
-          v-model.number="ruleForm2.age"></el-input>
+          v-model.number="ruleForm.name">
+              <template slot="prepend">
+                <i class="el-icon-message"></i>
+              </template>
+          </el-input>
       </el-form-item>
-      <el-form-item label="密码" prop="pass">
-        <el-input type="password" v-model="ruleForm2.pass"
-          auto-complete="off"></el-input>
+      <el-form-item prop="pass">
+        <el-input type="password" v-model="ruleForm.pass"
+          auto-complete="off">
+          <template slot="prepend">
+            <i class="el-icon-edit"></i>
+          </template>
+          </el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary"
-          @click="submitForm('ruleForm2')">提交</el-button>
-        <el-button
-          @click="resetForm('ruleForm2')">重置</el-button>
+        <el-button type="primary" class="login-submit"
+          @click="submitForm('ruleForm')">提交</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -27,53 +33,28 @@
     data() {
       let checkAge = (rule, value, callback) => {
         if (!value) {
-          return callback(new Error('年龄不能为空'));
+          return callback(new Error('请输入用户名'));
+        } else {
+          callback();
         }
-        setTimeout(() => {
-          if (!Number.isInteger(value)) {
-            callback(new Error('请输入数字值'));
-          } else {
-            if (value < 18) {
-              callback(new Error('必须年满18岁'));
-            } else {
-              callback();
-            }
-          }
-        }, 1000);
       };
       let validatePass = (rule, value, callback) => {
         if (value === '') {
           callback(new Error('请输入密码'));
         } else {
-          if (this.ruleForm2.checkPass !== '') {
-            this.$refs.ruleForm2.validateField('checkPass');
-          }
-          callback();
-        }
-      };
-      let validatePass2 = (rule, value, callback) => {
-        if (value === '') {
-          callback(new Error('请再次输入密码'));
-        } else if (value !== this.ruleForm2.pass) {
-          callback(new Error('两次输入密码不一致!'));
-        } else {
           callback();
         }
       };
       return {
-        ruleForm2: {
+        ruleForm: {
           pass: '',
-          checkPass: '',
-          age: ''
+          name: ''
         },
-        rules2: {
+        rules: {
           pass: [
             { validator: validatePass, trigger: 'blur' }
           ],
-          checkPass: [
-            { validator: validatePass2, trigger: 'blur' }
-          ],
-          age: [
+          name: [
             { validator: checkAge, trigger: 'blur' }
           ]
         }
@@ -81,21 +62,27 @@
     },
     methods: {
       submitForm(formName) {
-        this.$router.push('/index');
+        this.$message({
+          message: '请输入正确的用户名和密码',
+          type: 'error'
+        });
         this.$refs[formName].validate((valid) => {
+         this.$router.push('/main');
         });
       },
-      resetForm(formName) {
-        this.$refs[formName].resetFields();
-      }
     }
   }
 </script>
-<style>
+<style> 
   .login-pane{
     width: 300px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+  }
+  .login-submit{
+    width: 100%;
   }
 </style>

@@ -1,35 +1,61 @@
 <template>
-<div class='container'>
+<div>
 	 <router-view></router-view>
-	<div class='row' v-if="$route.path !== '/add'">
-		 <router-link
-		      to="add"
-		      class="btn btn-primary">
-		      创建
-    		</router-link>
-		 <table class="table table-striped table-bordered">
-		 	<thead>
-		 		<tr>
-			  	 	<td>序号</td>
-			  	 	<td>名字</td>
-			  	 	<td>性别</td>
-			  	 	<td>年龄</td>
-			  	 	<td>爱好</td>
-			  	 	<td>操作</td>
-			  	 </tr>
-		 	</thead>
-		 	<tbody>
- 			  	 <tr v-for="(user,index) in list">
-			  	 	<td>{{index+1}}</td>
-			  	 	<td>{{user.name}}</td>
-			  	 	<td>{{user.gender}}</td>
-			  	 	<td>{{user.age}}</td>
-			  	 	<td>{{user.hobby}}</td>
-			  	 	<td class="btn btn-xs btn-danger delete-button" @click="deleteUserItem(index)">X</td>
-			  	 </tr>
-		 	</tbody>
-		</table>
+	 <router-link
+	  to="add"
+	  class="btn btn-primary">
+	  创建
+	</router-link>
+	<div class="custom-table">
+		<el-table
+	        :data="list"
+	        border
+	        style="width: 100%"
+	        :default-sort = "{prop: 'date', order: 'descending'}"
+	        >
+	        <el-table-column
+	          label="序号"
+	          sortable
+	          width="180">
+           	 <template scope="scope">
+		       {{scope.$index+1}}
+		      </template>
+	        </el-table-column>
+	        <el-table-column
+	          prop="name"
+	          label="名字"
+	          sortable
+	          width="180">
+	        </el-table-column>
+	        <el-table-column
+	          prop="gender"
+	          label="性别"
+	          sortable
+	          width="180">
+	        </el-table-column>
+	        <el-table-column
+	          prop="age"
+	          label="年龄">
+	        </el-table-column>
+	         <el-table-column
+	          prop="hobby"
+	          label="爱好">
+	        </el-table-column>
+		    <el-table-column
+		      label="操作"
+		      width="120">
+		      <template scope="scope">
+		        <el-button
+		          @click.native.prevent="deleteUserItem(scope.$index)"
+		          type="text"
+		          size="small">
+		          移除
+		        </el-button>
+		      </template>
+		    </el-table-column>
+	      </el-table>
 	</div>
+
 </div>
 
 </template>

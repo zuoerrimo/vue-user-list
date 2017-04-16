@@ -4,23 +4,43 @@ import VueResource from 'vue-resource'
 import AddUser from '@/components/AddUser'
 import Login from '@/components/Login'
 import Main from '@/components/Main'
+import Table from '@/components/Table'
+import List from '@/components/List'
 
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
 
 
-const routes = [{
-  path: '/add',
-  component: AddUser
-  },
+const routes = [
   {
     path: '/login',
     component: Login
   },
+
   {
     path: '/main',
-    component: Main
+    component: Main,
+    children:[
+      {
+        path: '/',
+        component: List
+      },
+      {
+        path: '/table',
+        component: Table
+      },
+      {
+        path: '/list',
+        component: List,
+        children: [
+         { 
+          path: '/add',
+          component: AddUser
+          },
+        ]
+      },
+    ]
   },
   {
   path : '/time-entries',
