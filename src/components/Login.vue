@@ -20,6 +20,7 @@
       </el-form-item>
       <el-form-item>
         <el-button type="primary" class="login-submit"
+         native-type="submit"
           @click="submitForm('ruleForm')">提交</el-button>
       </el-form-item>
     </el-form>
