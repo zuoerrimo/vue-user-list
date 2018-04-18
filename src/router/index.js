@@ -6,6 +6,7 @@ import Login from '@/components/Login'
 import Main from '@/components/Main'
 import Table from '@/components/Table'
 import List from '@/components/List'
+import CustomGrid from '@/components/Grid'
 
 
 Vue.use(VueRouter)
@@ -29,6 +30,10 @@ const routes = [
       {
         path: '/table',
         component: Table
+      },
+      {
+        path: '/customGrid',
+        component: CustomGrid
       },
       {
         path: '/list',

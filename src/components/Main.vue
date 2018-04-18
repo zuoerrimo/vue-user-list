@@ -5,6 +5,7 @@
           <el-menu :router=true class="custom-menu" default-active="/list">
             <el-menu-item index="/list"><i class="el-icon-menu"></i>table-list</el-menu-item>
             <el-menu-item index="/table"><i class="el-icon-setting"></i>table</el-menu-item>
+            <el-menu-item index="/customGrid"><i class="el-icon-setting"></i>grid</el-menu-item>
           </el-menu>
       </el-col>
       <el-col :span="20" class="content">
