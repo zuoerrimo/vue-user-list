@@ -29,7 +29,6 @@
 import {GridLayout, GridItem} from 'vue-grid-layout'
 
 export default {
-  name: 'grid',
   components:{
     GridLayout,
     GridItem,

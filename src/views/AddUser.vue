@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="form-horizontal">
     <div class="form-group">
       <div class="col-sm-12">
@@ -11,7 +12,7 @@
           />
       </div>
     </div>
-   <div class="form-group">
+   <div class="form-group"
       <div class="col-sm-12">
         <label>gender:</label>
          <select  class="form-group" v-model='gender'>
@@ -43,32 +44,37 @@
       </div>
     </div>
     <button class="btn btn-primary" @click="save()">保存</button>
-    <router-link to="/" class="btn btn-danger">取消</router-link>
+    <button class="btn btn-primary" @click="cancel()">取消</button>
   </div>
+</div>
 </template>
 
 <script>
   export default {
-        name : 'LogTime',
-        data() {
-            return {
-                userName : '',
-                gender : '',
-                age : '',
-                hobby : '',
-            }
-        },
-        methods:{
-          save() {
-            const user = {
-              name : this.userName,
-              age : this.age,
-              gender : this.gender,
-              hobby : this.hobby,
-            };
-            this.$store.dispatch('saveUser', user)
-            this.$router.go(-1)
-          }
-        }
+    props: {
+    },
+    data() {
+      return {
+        userName : '',
+        gender : '',
+        age : '',
+        hobby : '',
+      }
+    },
+    methods:{
+      save() {
+        const user = {
+          name : this.userName,
+          age : this.age,
+          gender : this.gender,
+          hobby : this.hobby,
+        };
+        this.$store.dispatch('saveUser', user)
+        this.$emit('closeModal')
+      },
+      cancel() {
+        this.$emit('closeModal')
+      },
     }
+  }
 </script>

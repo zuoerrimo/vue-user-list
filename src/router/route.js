@@ -1,4 +1,4 @@
-import AddUser from '@/views/AddUser'
+
 import Login from '@/views/Login'
 import Main from '@/views/Main'
 import Table from '@/views/Table'
@@ -14,6 +14,7 @@ export const routes = [{
   }, {
     path: '/main',
     component: Main,
+    redirect: 'table',
     children:[
       {
         path: '/table',
@@ -30,12 +31,6 @@ export const routes = [{
         component: List,
         icon: 'el-icon-setting',
         text: 'table-with-form',
-        children: [
-         { 
-          path: '/add',
-          component: AddUser
-          },
-        ]
       },
     ]
   }]

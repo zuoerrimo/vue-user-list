@@ -34,10 +34,6 @@
       }
     },
     methods: {
-      handleSelect(key, keyPath) {
-        debugger
-       this.$router.push(key)
-      }
     },
     mounted() {
     },
