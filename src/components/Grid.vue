@@ -16,6 +16,7 @@
           :y="item.y"
           :w="item.w"
           :h="item.h"
+          :key="item.i"
           :i="item.i">
           {{item.text}}
         <component v-bind:is="item.component"> </component>
@@ -36,7 +37,7 @@ export default {
   data(){
     return {
       layout: [
-      {"x":0,"y":0,"w":2,"h":2,"i":"0",text:'第1个',compentent:"组件"},
+      {"x":0,"y":0,"w":2,"h":2,"i":"0",text:'第一个',compentent:"组件"},
       {"x":2,"y":0,"w":2,"h":4,"i":"1",text:'第2个',compentent:"组件"},
       {"x":4,"y":0,"w":2,"h":5,"i":"2",text:'第3个',compentent:"组件"},
       {"x":6,"y":0,"w":2,"h":3,"i":"3",text:'第4个',compentent:"组件"},

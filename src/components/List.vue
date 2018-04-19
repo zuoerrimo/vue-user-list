@@ -3,7 +3,7 @@
 	 <router-view></router-view>
 	 <router-link
 	  to="add"
-	  class="btn btn-primary">
+	  class="btn btn-primary add-btn">
 	  创建
 	</router-link>
 	<div class="custom-table">
@@ -17,7 +17,7 @@
 	          label="序号"
 	          sortable
 	          width="180">
-           	 <template scope="scope">
+           	 <template slot-scope="scope">
 		       {{scope.$index+1}}
 		      </template>
 	        </el-table-column>
@@ -44,7 +44,7 @@
 		    <el-table-column
 		      label="操作"
 		      width="120">
-		      <template scope="scope">
+		      <template slot-scope="scope">
 		        <el-button
 		          @click.native.prevent="deleteUserItem(scope.$index)"
 		          type="text"
@@ -62,7 +62,6 @@
 
 <script>
 export default {
-  name: 'app',
   computed : {
       list () {
         // 从store中取出数据
@@ -80,5 +79,8 @@ export default {
   .table{
     color: #fff;
     width: 100%;
+  }
+  .add-btn {
+    margin-bottom: 10px;
   }
 </style>

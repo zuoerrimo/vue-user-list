@@ -63,10 +63,6 @@
     },
     methods: {
       submitForm(formName) {
-        this.$message({
-          message: '请输入正确的用户名和密码',
-          type: 'error'
-        });
         this.$refs[formName].validate((valid) => {
          this.$router.push('/main');
         });

@@ -2,10 +2,10 @@
   <div>
     <el-row  type="flex">
       <el-col :span='4'>
-          <el-menu :router=true class="custom-menu" default-active="/list">
-            <el-menu-item index="/list"><i class="el-icon-menu"></i>table-list</el-menu-item>
-            <el-menu-item index="/table"><i class="el-icon-setting"></i>table</el-menu-item>
-            <el-menu-item index="/customGrid"><i class="el-icon-setting"></i>grid</el-menu-item>
+          <el-menu :router=true class="custom-menu" :default-active="getCurUrl">
+            <el-menu-item index="/list"><i class="el-icon-menu"></i>带操作的表格</el-menu-item>
+            <el-menu-item index="/table"><i class="el-icon-setting"></i>表格</el-menu-item>
+            <el-menu-item index="/customGrid"><i class="el-icon-upload"></i>图形</el-menu-item>
           </el-menu>
       </el-col>
       <el-col :span="20" class="content">
@@ -16,7 +16,16 @@
 </template>
 <script>
 export default {
-  name: 'main',
+  computed: {
+    getCurUrl() {
+      let curPath = this.$route.fullPath
+      if(curPath === '/main') {
+        return '/list'
+      } else {
+        return curPath
+      }
+    }
+  },
   methods: {
     handleSelect(key, keyPath) {
      this.$router.push(key)

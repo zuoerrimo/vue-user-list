@@ -136,12 +136,4 @@ new Vue({
   router,
   store,	
   ...App,
-  methods: {
-    checkLogin(){
-        this.$router.push('/login');
-    }
-  },
-  created() {
-    this.checkLogin();
-  }
 })
