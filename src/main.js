@@ -8,6 +8,7 @@ import App from './App'
 import router from './router/index'
 import 'bootstrap/dist/css/bootstrap.css'
 import store from './store'
+import 'components/global.js'
 Vue.use(ElementUI)
 import {
   Pagination,

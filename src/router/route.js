@@ -4,6 +4,7 @@ import Main from '@/views/Main'
 import Table from '@/views/Table'
 import List from '@/views/List'
 import CustomGrid from '@/views/Grid'
+import Line from '@/views/Line'
 
 export const routes = [{
   path: '/', 
@@ -31,6 +32,11 @@ export const routes = [{
         component: List,
         icon: 'el-icon-setting',
         text: 'table-with-form',
+      }, {
+        path: '/line',
+        component: Line,
+        icon: 'el-icon-setting',
+        text: '饼图',
       },
     ]
   }]
